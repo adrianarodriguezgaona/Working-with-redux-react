@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
-export default class BuyPokemon extends Component {
+import {buy_pokemon_action, return_pokemon_action} from '../redux/actions/gameShopAction';
+
+class BuyPokemon extends Component {
     render() {
         return (
           <div>
-              <button className="btn btn-dark btn-sm mb-2">Comprar Pokemon</button>
-              <button className="btn btn-dark btn-sm mb-1">Regresar Pokemon</button>
+              <button className="btn btn-dark btn-sm mb-2" onClick={() =>{
+                  this.props.buy_pokemon_action(1);
+              }}>Comprar Pokemon</button>
+              <button className="btn btn-dark btn-sm mb-1" onClick={ () =>{
+                  this.props.return_pokemon_action(1);
+              }}>Regresar Pokemon</button>
           </div>
         )
     }
 }
+
+const mapDispatchToProps = {
+    buy_pokemon_action,
+    return_pokemon_action
+};
+
+//null= state. We dont have here state but is possible to get it here.
+export default connect(null, mapDispatchToProps)(BuyPokemon);

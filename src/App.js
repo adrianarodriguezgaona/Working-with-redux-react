@@ -6,11 +6,14 @@ import AmountPokemon from './components/AmountPokemon';
 import BuyPokemon from './components/BuyPokemon';
 import store from './redux/store';
 
+import {Provider} from 'react-redux';
+
 function App() {
   
   console.log(store.getState());
  
   return (
+    <Provider store = {store}>
     <div className="App container">
       <div className="row">
         <div className= "card mt-5" style={{maxWidth: '370px'}}>
@@ -37,6 +40,7 @@ function App() {
       </div>
      
     </div>
+    </Provider>
   );
 }
 
